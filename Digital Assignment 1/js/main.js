@@ -27,9 +27,6 @@ class MyScene extends Phaser.Scene {
     
     create() {
         
-		this.physics.startSystem(Phaser.Physics.ARCADE);
-		this.physics.arcade.gravity.y = 100;
-		
 		var ball = this.add.sprite(200, 300, 'ball').setInteractive();
 		
 		this.input.setDraggable(ball);
