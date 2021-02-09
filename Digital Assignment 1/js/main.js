@@ -10,6 +10,14 @@ import "./phaser.js";
 // All loading functions will typically all be found inside `preload()`.
 
 // The simplest class example: https://phaser.io/examples/v3/view/scenes/scene-from-es6-class
+const game = new Phaser.Game({
+    type: Phaser.AUTO,
+    parent: 'game',
+    width: 800,
+    height: 600,
+    scene: MyScene,
+    physics: { default: 'arcade' },
+    });
 
 class MyScene extends Phaser.Scene {
     
@@ -74,11 +82,3 @@ class MyScene extends Phaser.Scene {
     }
 }
 
-const game = new Phaser.Game({
-    type: Phaser.AUTO,
-    parent: 'game',
-    width: 800,
-    height: 600,
-    scene: MyScene,
-    physics: { default: 'arcade' },
-    });
