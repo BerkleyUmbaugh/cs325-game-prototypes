@@ -28,7 +28,7 @@ class MyScene extends Phaser.Scene {
         // Create a sprite at the center of the screen using the 'logo' image.
         this.bouncy = this.physics.add.sprite( this.cameras.main.centerX, this.cameras.main.centerX, 'logo' );
         
-        var drag_logo = this.add.image(0,0, 'logo')
+        var drag_logo = this.add.image(0,0, 'logo');
         this.input.setDraggable(drag_logo);
         
         // Make it bounce off of the world bounds.
