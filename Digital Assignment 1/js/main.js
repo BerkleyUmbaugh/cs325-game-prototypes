@@ -22,24 +22,24 @@ class MyScene extends Phaser.Scene {
     preload() {
         // Load an image and call it 'logo'.
         this.load.image( 'logo', 'assets/phaser.png' );
-		this.load.image( 'ball', 'assets/Basketball.png' );
+	this.load.image( 'ball', 'assets/Basketball.jpeg' );
     }
     
     create() {
         
-		var ball = this.add.sprite(200, 300, 'ball').setInteractive();
+	var ball = this.add.sprite(200, 300, 'ball').setInteractive();
 		
-		this.input.setdraggable(ball);
-		this.input.dragDistanceThreshold = 1;
+	this.input.setdraggable(ball);
+	this.input.dragDistanceThreshold = 1;
 		
-		this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+	this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
 
         gameObject.x = dragX;
         gameObject.y = dragY;
 
-    });
+    	});
 		
-		// Create a sprite at the center of the screen using the 'logo' image.
+	// Create a sprite at the center of the screen using the 'logo' image.
         this.bouncy = this.physics.add.sprite( this.cameras.main.centerX, this.cameras.main.centerX, 'logo' );
         
         // Make it bounce off of the world bounds.
