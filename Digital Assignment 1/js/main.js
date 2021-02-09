@@ -51,6 +51,8 @@ class MyScene extends Phaser.Scene {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         this.bouncy.rotation = this.physics.accelerateToObject( this.bouncy, this.input.activePointer, 500, 500, 500 );
+        
+        this.input.setDraggable(this.bouncy);
     }
 }
 
