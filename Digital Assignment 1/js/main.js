@@ -22,24 +22,27 @@ class MyScene extends Phaser.Scene {
     preload() {
         // Load an image and call it 'logo'.
         this.load.image( 'logo', 'assets/phaser.png' );
-	this.load.image( 'ball', 'assets/Basketball.jpeg' );
+		this.load.image( 'ball', 'assets/Basketball.jpeg' );
     }
     
     create() {
         
-	var ball = this.add.sprite(200, 300, 'ball').setInteractive();
+		game.physics.startSystem(Phaser.Physics.ARCADE);
+		game.physics.arcade.gravity.y = 100;
 		
-	this.input.setDraggable(ball);
-	this.input.dragDistanceThreshold = 1;
+		var ball = this.add.sprite(200, 300, 'ball').setInteractive();
 		
-	this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+		this.input.setDraggable(ball);
+		this.input.dragDistanceThreshold = 1;
+		
+		this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
 
         gameObject.x = dragX;
         gameObject.y = dragY;
 
-    	});
+    });
 		
-	// Create a sprite at the center of the screen using the 'logo' image.
+		// Create a sprite at the center of the screen using the 'logo' image.
         this.bouncy = this.physics.add.sprite( this.cameras.main.centerX, this.cameras.main.centerX, 'logo' );
         
         // Make it bounce off of the world bounds.
@@ -57,7 +60,9 @@ class MyScene extends Phaser.Scene {
         let text = this.add.text( this.cameras.main.centerX, 15, "Hello Berkley", style );
         text.setOrigin( 0.5, 0.0 );
 		
-		
+		 game.physics.enable([ball],Phaser.Physics.ARCADE);
+		 ball.body.collideWorldBounds = true;
+		 ball.body.bounce.y = 0.8;
 	
 	}	
 	
