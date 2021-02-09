@@ -22,12 +22,26 @@ class MyScene extends Phaser.Scene {
     preload() {
         // Load an image and call it 'logo'.
         this.load.image( 'logo', 'assets/phaser.png' );
+		this.load.image( 'ball', 'assets/Basketball.png' );
     }
     
     create() {
-        // Create a sprite at the center of the screen using the 'logo' image.
-        this.bouncy = this.physics.add.sprite( this.cameras.main.centerX, this.cameras.main.centerX, 'logo' );
+        
+		var ball = this.add.sprite(200, 300, 'ball').setInteractive();
+		
+		this.input.setdraggable(ball);
+		this.input.dragDistanceThreshold = 1;
+		
+		this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
 
+        gameObject.x = dragX;
+        gameObject.y = dragY;
+
+    });
+		
+		// Create a sprite at the center of the screen using the 'logo' image.
+        this.bouncy = this.physics.add.sprite( this.cameras.main.centerX, this.cameras.main.centerX, 'logo' );
+        
         // Make it bounce off of the world bounds.
         this.bouncy.body.collideWorldBounds = true;
         
@@ -42,8 +56,11 @@ class MyScene extends Phaser.Scene {
         let style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
         let text = this.add.text( this.cameras.main.centerX, 15, "Hello Berkley", style );
         text.setOrigin( 0.5, 0.0 );
-        
-    }
+		
+		
+	
+	}	
+	
     
     update() {
         // Accelerate the 'logo' sprite towards the cursor,
@@ -52,8 +69,6 @@ class MyScene extends Phaser.Scene {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         this.bouncy.rotation = this.physics.accelerateToObject( this.bouncy, this.input.activePointer, 500, 500, 500 );
-        
-        this.input.setDraggable(this.bouncy);
     }
 }
 
