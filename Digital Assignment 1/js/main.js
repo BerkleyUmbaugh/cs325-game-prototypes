@@ -27,12 +27,12 @@ class MyScene extends Phaser.Scene {
     
     create() {
         
-		var ball = this.add.sprite(200, 300, 'ball').setInteractive();
+	var ball = this.add.sprite(200, 300, 'ball').setInteractive();
 		
-		this.input.setDraggable(ball);
-		this.input.dragDistanceThreshold = 1;
+	this.input.setDraggable(ball);
+	this.input.dragDistanceThreshold = 1;
 		
-		this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+	this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
 
         gameObject.x = dragX;
         gameObject.y = dragY;
