@@ -27,10 +27,7 @@ class MyScene extends Phaser.Scene {
     create() {
         // Create a sprite at the center of the screen using the 'logo' image.
         this.bouncy = this.physics.add.sprite( this.cameras.main.centerX, this.cameras.main.centerX, 'logo' );
-        
-        var drag_logo = this.add.image(0,0, 'logo');
-        this.input.setDraggable(drag_logo);
-        
+
         // Make it bounce off of the world bounds.
         this.bouncy.body.collideWorldBounds = true;
         
@@ -46,12 +43,6 @@ class MyScene extends Phaser.Scene {
         let text = this.add.text( this.cameras.main.centerX, 15, "Hello Berkley", style );
         text.setOrigin( 0.5, 0.0 );
         
-        this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
-
-        gameObject.x = dragX;
-        gameObject.y = dragY;
-
-    });
     }
     
     update() {
