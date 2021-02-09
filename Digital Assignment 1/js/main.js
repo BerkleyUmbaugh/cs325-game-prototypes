@@ -60,9 +60,9 @@ class MyScene extends Phaser.Scene {
         let text = this.add.text( this.cameras.main.centerX, 15, "Hello Berkley", style );
         text.setOrigin( 0.5, 0.0 );
 		
-		 game.physics.enable([ball],Phaser.Physics.ARCADE);
-		 ball.body.collideWorldBounds = true;
-		 ball.body.bounce.y = 0.8;
+	game.physics.enable([ball],Phaser.Physics.ARCADE);
+	ball.body.collideWorldBounds = true;
+	ball.body.bounce.y = 0.8;
 	
 	}	
 	
