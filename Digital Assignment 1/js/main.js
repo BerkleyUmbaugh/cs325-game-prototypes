@@ -60,7 +60,7 @@ import "./phaser.js";
         { frameWidth: 32, frameHeight: 32 }
 	);
     this.load.spritesheet('doctor', 
-        'assets/doctor.png',
+        'assets/Doctor.png',
         { frameWidth: 32, frameHeight: 32 }
 	);
 	this.load.audio('flask_break','assets/flask_sound.mp3')
