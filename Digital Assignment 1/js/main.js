@@ -11,77 +11,263 @@ import "./phaser.js";
 
 // The simplest class example: https://phaser.io/examples/v3/view/scenes/scene-from-es6-class
 
-class MyScene extends Phaser.Scene {
-    
-    constructor() {
-        super();
-        
-        this.bouncy = null;
-    }
-    
-    preload() {
-        // Load an image and call it 'logo'.
-        this.load.image( 'logo', 'assets/phaser.png' );
-		this.load.image( 'ball', 'assets/Basketball.jpeg' );
-    }
-    
-    create() {
-        
-	var ball = this.add.sprite(200, 300, 'ball').setInteractive();
-	
-	game.physics.startSystem(Phaser.Physics.ARCADE);
-	game.physics.arcade.gravity.y = 100;
-	    
-	this.input.setDraggable(ball);
-	this.input.dragDistanceThreshold = 1;
-		
-	this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
-
-        gameObject.x = dragX;
-        gameObject.y = dragY;
-
-    });
-		
-		// Create a sprite at the center of the screen using the 'logo' image.
-        this.bouncy = this.physics.add.sprite( this.cameras.main.centerX, this.cameras.main.centerX, 'logo' );
-        
-        // Make it bounce off of the world bounds.
-        this.bouncy.body.collideWorldBounds = true;
-        
-        // Make the camera shake when clicking/tapping on it.
-        this.bouncy.setInteractive();
-        this.bouncy.on( 'pointerdown', function( pointer ) {
-            this.scene.cameras.main.shake(500);
-            });
-        
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        let style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        let text = this.add.text( this.cameras.main.centerX, 15, "Hello Berkley", style );
-        text.setOrigin( 0.5, 0.0 );
-		
-	game.physics.enable([ball], Phaser.Physics.ARCADE);
-	ball.body.collideWorldBounds = true;
-	ball.body.bounce.y = 0.8;
-	
-	}	
-	
-    
-    update() {
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        this.bouncy.rotation = this.physics.accelerateToObject( this.bouncy, this.input.activePointer, 500, 500, 500 );
-    }
-}
-
-const game = new Phaser.Game({
+    var config = {
     type: Phaser.AUTO,
-    parent: 'game',
     width: 800,
     height: 600,
-    scene: MyScene,
-    physics: { default: 'arcade' },
-    });
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+		}
+	};
+
+    var game = new Phaser.Game(config);
+
+    function preload ()
+    {
+	this.load.image('sky', 'assets/sky.png');
+    this.load.image('ground', 'assets/platform2.png');
+    this.load.spritesheet('pink', 
+        'assets/Flask_pink.png',
+        { frameWidth: 32, frameHeight: 32 }
+	);
+	this.load.spritesheet('red', 
+        'assets/Flask_red.png',
+        { frameWidth: 32, frameHeight: 32 }
+	);
+	this.load.spritesheet('cyan', 
+        'assets/Flask_cyan.png',
+        { frameWidth: 32, frameHeight: 32 }
+	);
+	this.load.spritesheet('blue', 
+        'assets/Flask_blue.png',
+        { frameWidth: 32, frameHeight: 32 }
+	);
+	this.load.spritesheet('yellow', 
+        'assets/Flask_yellow.png',
+        { frameWidth: 32, frameHeight: 32 }
+	);
+	this.load.spritesheet('green', 
+        'assets/Flask_green.png',
+        { frameWidth: 32, frameHeight: 32 }
+	);
+    this.load.spritesheet('doctor', 
+        'assets/doctor.png',
+        { frameWidth: 32, frameHeight: 32 }
+	);
+	this.load.audio('flask_break','assets/flask_sound.mp3')
+    }
+
+	var platforms;
+    var cursors;
+	var player;
+	var flasks;
+	var score = 0;
+	var scoreText;
+	var livesText;
+	var lives = 3;
+	
+    function create ()
+    {
+	
+	this.add.image(400, 300, 'sky');
+	scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
+	livesText = this.add.text(16, 50, 'Lives: 3', { fontSize: '32px', fill: '#000' });
+	platforms = this.physics.add.staticGroup();
+
+    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+
+    platforms.create(600, 400, 'ground');
+    platforms.create(50, 250, 'ground');
+    platforms.create(750, 220, 'ground');
+	
+	player = this.physics.add.sprite(100, 450, 'doctor');
+	flasks = this.physics.add.group();
+	flasks.add(this.physics.add.sprite(100, 100, 'pink'));
+	flasks.add(this.physics.add.sprite(300, 300, 'blue'));
+	flasks.add(this.physics.add.sprite(750, 450, 'yellow'));
+	flasks.add(this.physics.add.sprite(600, 300, 'green'));
+	flasks.add(this.physics.add.sprite(700, 100, 'cyan'));
+	
+	player.setBounce(0.2);
+	player.setCollideWorldBounds(true);
+
+	this.anims.create({
+		key: 'left',
+		frames: this.anims.generateFrameNumbers('doctor', { start: 4, end: 6 }),
+		frameRate: 10,
+		repeat: -1
+	});
+
+	this.anims.create({
+		key: 'turn',
+		frames: [ { key: 'doctor', frame: 0 } ],
+		frameRate: 20
+	});
+
+	this.anims.create({
+		key: 'right',
+		frames: this.anims.generateFrameNumbers('doctor', { start: 1, end: 3 }),
+		frameRate: 10,
+		repeat: -1
+	});
+	
+	this.anims.create({
+		key: 'dead',
+		frames: [ {key: 'doctor', frame: 7} ],
+		frameRate: 10,
+		repeat: -1
+	});
+	
+	this.anims.create({
+		key: 'bubble_p',
+		frames: this.anims.generateFrameNumbers('pink', {start: 1, end: 6}),
+		frameRate: 30,
+		repeat: -1
+	});
+	this.anims.create({
+		key: 'bubble_r',
+		frames: this.anims.generateFrameNumbers('red', {start: 1, end: 6}),
+		frameRate: 30,
+		repeat: -1
+	});
+	this.anims.create({
+		key: 'bubble_c',
+		frames: this.anims.generateFrameNumbers('cyan', {start: 1, end: 6}),
+		frameRate: 30,
+		repeat: -1
+	});
+	this.anims.create({
+		key: 'bubble_b',
+		frames: this.anims.generateFrameNumbers('blue', {start: 1, end: 6}),
+		frameRate: 30,
+		repeat: -1
+	});
+	this.anims.create({
+		key: 'bubble_y',
+		frames: this.anims.generateFrameNumbers('yellow', {start: 1, end: 6}),
+		frameRate: 30,
+		repeat: -1
+	});
+	this.anims.create({
+		key: 'bubble_g',
+		frames: this.anims.generateFrameNumbers('green', {start: 1, end: 6}),
+		frameRate: 30,
+		repeat: -1
+	});
+	
+	var children = flasks.getChildren();
+	
+	children[0].anims.play('bubble_p');
+	children[1].anims.play('bubble_b');
+	children[2].anims.play('bubble_y');
+	children[3].anims.play('bubble_g');
+	children[4].anims.play('bubble_c');
+
+	player.body.setGravityY(300)
+	this.physics.add.collider(player, platforms);
+	this.physics.add.collider(flasks, platforms);
+	flasks = this.physics.add.overlap(player,flasks,grab_flask,null,this)
+	cursors = this.input.keyboard.createCursorKeys();
+	
+    }
+
+    function update ()
+    {
+	
+	if (cursors.left.isDown)
+	{
+		player.setVelocityX(-175);
+
+		player.anims.play('left', true);
+	}
+	else if (cursors.right.isDown)
+	{
+		player.setVelocityX(175);
+
+		player.anims.play('right', true);
+	}
+	else
+	{
+		player.setVelocityX(0);
+
+		if(lives <= 0){
+			player.anims.play('dead');	
+		}
+		else{
+			player.anims.play('turn');
+		}
+	}
+
+	if (cursors.up.isDown && player.body.touching.down)
+	{
+		player.setVelocityY(-500);
+	}
+    }
+	
+	function grab_flask(player,flask){
+		this.sound.add('flask_break').play();
+		flask.disableBody(true, true);
+		score += 10;
+		if(score % 100 == 0){
+			lives += 3;
+			livesText.setText('Lives: ' + lives)
+		}
+		scoreText.setText('Score: ' + score);
+		var color = Phaser.Math.Between(0,4);
+		var x_cord = Phaser.Math.Between(0,800);
+		var y_cord = Phaser.Math.Between(0,500);
+
+		var red_x_cord = Phaser.Math.Between(0,800);
+		var red_y_cord = Phaser.Math.Between(0,500);
+
+		switch(color){
+			case 0:
+				var new_flask = this.physics.add.sprite(x_cord, y_cord, 'pink');
+				new_flask.anims.play('bubble_p',true);
+				break;
+			case 1:
+				var new_flask = this.physics.add.sprite(x_cord, y_cord, 'blue');
+				new_flask.anims.play('bubble_b',true);
+				break;
+			case 2:
+				var new_flask = this.physics.add.sprite(x_cord, y_cord, 'cyan');
+				new_flask.anims.play('bubble_c',true);
+				break;
+			case 3:
+				var new_flask = this.physics.add.sprite(x_cord, y_cord, 'green');
+				new_flask.anims.play('bubble_g',true);
+				break;
+			case 4:
+				var new_flask = this.physics.add.sprite(x_cord, y_cord, 'yellow');
+				new_flask.anims.play('bubble_y',true);
+				break;
+		}
+		this.physics.add.collider(new_flask, platforms);
+		new_flask = this.physics.add.overlap(player,new_flask,grab_flask,null,this);
+
+		var new_red_flask = this.physics.add.sprite(red_x_cord, red_y_cord, 'red');
+		new_red_flask.anims.play('bubble_r',true);
+		this.physics.add.collider(new_red_flask, platforms);
+		this.physics.add.overlap(new_red_flask,player,grab_red,null,this);
+	}
+
+	function grab_red(flask){
+		this.sound.add('flask_break').play();
+		livesText.setText('Lives: ' + lives)
+		flask.disableBody(true, true);
+		lives = lives - 1;
+		livesText.setText('lives: ' + lives)
+		if (lives <= 0){
+			this.physics.pause();
+		}
+	}
+
