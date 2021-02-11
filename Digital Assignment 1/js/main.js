@@ -11,6 +11,8 @@ import "./phaser.js";
 
 // The simplest class example: https://phaser.io/examples/v3/view/scenes/scene-from-es6-class
 
+// The Majority of the code below comes from the phaser example game and everything else was found in the API for phaser.
+
     var config = {
     type: Phaser.AUTO,
     width: 800,
