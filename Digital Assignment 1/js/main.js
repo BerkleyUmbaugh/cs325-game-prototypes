@@ -34,8 +34,8 @@ import "./phaser.js";
     function preload ()
     {
 	this.load.image('sky', 'assets/sky.png');
-    this.load.image('ground', 'assets/platform2.png');
-    this.load.spritesheet('pink', 
+    	this.load.image('ground', 'assets/platform2.png');
+    	this.load.spritesheet('pink', 
         'assets/Flask_pink.png',
         { frameWidth: 32, frameHeight: 32 }
 	);
@@ -67,7 +67,7 @@ import "./phaser.js";
     }
 
 	var platforms;
-    var cursors;
+    	var cursors;
 	var player;
 	var flasks;
 	var score = 0;
@@ -83,11 +83,11 @@ import "./phaser.js";
 	livesText = this.add.text(16, 50, 'Lives: 3', { fontSize: '32px', fill: '#000' });
 	platforms = this.physics.add.staticGroup();
 
-    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+    	platforms.create(400, 568, 'ground').setScale(2).refreshBody();
 
-    platforms.create(600, 400, 'ground');
-    platforms.create(50, 250, 'ground');
-    platforms.create(750, 220, 'ground');
+    	platforms.create(600, 400, 'ground');
+    	platforms.create(50, 250, 'ground');
+    	platforms.create(750, 220, 'ground');
 	
 	player = this.physics.add.sprite(100, 450, 'doctor');
 	flasks = this.physics.add.group();
