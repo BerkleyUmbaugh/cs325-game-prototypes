@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Chemist 2</title>
+<style>
+body
+{
+    color: #777;
+    font-family: "Avenir", Verdana, sans-serif;
+}
+#readme
+{
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+<div id="game"></div>
+<div id="readme">
+<h2>Chemist 2</h2>
+
+<ul>
+<li><strong>Originality:</strong>
+Chemist 2 is original because it randomizes keyboard inputs to make the game different every time
+</li>
+
+<li><strong>Technical Merit:</strong>
+The input randomization gives a mathematically equal chance for any key to become any input. This may seem trivial, but picking 3 keys independently that don't overlap is not as simple as just picking each key one at a time without overlap. If you picked the keys in this way the first key would have probability 1/n, the second key would have probability 1/n-1, and the third key would have probability 1/n-2. My current implementation gives all keys probability 1/n of being chosen.
+</li>
+
+<li><strong>Prototype Postmortem:</strong>
+I learned how to modify key maps in Phaser and how to dynamically change key maps during gameplay.
+The hardest part was figuring out dynamic key allocation and making it efficent.
+</li>
+
+<li><strong>Prototype Assets:</strong>
+I made all of the animations and textures myself on https://www.piskelapp.com/ using their editor. The sound clip is from minecraft and was downloaded from this link https://www.myinstants.com/instant/minecraft-drinking-sound-35393/.
+<ul>
+</ul>
+</li>
+
+<li><strong>Prototype Closest Other Game:</strong>
+The game was based on the phaser tutorial and assignment 1. The other aspects were derived from the API for phaser 3, specifically how to make a timer and change key mappings.
+</li>
+
+<li><strong>High Concept:</strong>
+    A chemist accidentally spilled a poison on himself which will kill him in 20 seconds if he doesn't receive the antidote in time. The problem is the poison causes confusion and he can’t remember how to move. In order to survive he will need to remember how to move and reach the antidote before 20 seconds have passed.
+</li>
+
+<li><strong>Theme:</strong>
+I used the "game only takes 20 seconds to play" challenge for this game. This is shown by the timer in the top left which counts down after hitting play.
+</li>
+
+<li><strong>Mandated Variety:</strong>
+The player moves with the keyboard but the inputs that control which direction the player move are randomized. This aspect of randomness along with the timer make the game play have variety.
+</li>
+
+<li><strong>Prototype Goal:</strong>
+This Prototype is testing timed gameplay to see how players react to being dropped in a world with no idea how to move and being forced to figure it out before time is up.
+</li>
+
+<li><strong>Player Experience Goals:</strong>
+I want players to feel a sense of panic when the game starts, and they see the timer counting down. After this initial panic, I want players who are able to react quickly and react to feel rewarded by winning the game.
+</li>
+
+<li><strong>Gameplay:</strong>
+The inputs for this game include pressing random keys to figure out how to move left, right, and how to jump. Once a player finds a key, it is logged for them at the top right of the screen. This makes the game a bit easier and less stressful for the player. The goal of the game is to grab the red flask in the top left of the screen before the timer runs out. Getting to this flask normally would be easy but with randomized inputs it becomes much more difficult.  
+</li>
+
+<li><strong>Strategies:</strong>
+    I think players will start by mashing randomly on their keyboards hoping to find the correct keys. On a second attempt, I believe they will uniformly press all the keys one row at a time. Another interesting strategy I found was always holding down jump once it is found can be useful in navigating to the flask.
+</li>
+
+<li><strong>Story/Setting/Premise:</strong>
+    This game takes place in a chemist’s outdoor lab where he test new compounds and reactions in the hopes of discovering something new. The reason he works outside is he doesn’t have access to fancy equipment like a fume hood, so he works outside to allow the toxic fumes to dissipate making his work safer. This does pose some more added risks like weather conditions and storage of materials. The gust of wind that spilled the current poison is a good example of this.
+</li>
+
+<li><strong>Target Audience:</strong>
+This game is for people who want a quick experience with a slight challenge. The game can take many attempts to beat or only a few which makes it a casual game for the player.
+</li>
+
+<li><strong>Play Time:</strong>
+The game should take exactly 20 seconds to play after reading the rules.
+</li>
+
+</ul>
+</div>
+
+<!-- main.js must come at the end since it expects the HTML to have been created. -->
+<script src="js/main.js" type="module"></script>
+</body>
+</html>
