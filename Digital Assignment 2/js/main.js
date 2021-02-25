@@ -14,7 +14,7 @@ import "./phaser.js";
 // The Majority of the code below comes from the phaser example game and everything else was found in the API for phaser.
 
     var config = {
-    key: 'game',
+    
 	type: Phaser.AUTO,
     width: 800,
     height: 600,
