@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Chemist</title>
+<title>Pirate Training</title>
 <style>
 body
 {
@@ -19,71 +19,73 @@ body
 <body>
 <div id="game 3"></div>
 <div id="readme">
-<h2>Chemist</h2>
+<h2>Pirate Training</h2>
 
 <ul>
 <li><strong>Originality:</strong>
-Chemist is original because it is about a chemist trying to avoid using harmful chemicals even though they are easy to obtain in the real world. It is a statment about modern industry and it's use of harmful chemicals in products just to save money.
+The game is original because it allows players to shoot cannon balls out of a cannon to hit targets.
 </li>
 
 <li><strong>Technical Merit:</strong>
-The game uses math to determine when extra lives should be given and the spawning algorithm makes it so flasks never spawn outside the world.
+The physics and calculation for the velocity of the cannon ball required using math to find the x and y component of the velocity. 
 </li>
 
 <li><strong>Prototype Postmortem:</strong>
-I learned the basics of phaser objects and how to create, destroy, and interact with them. I also learned how to write javaScript for the first time which wasn't trivial. 
-The hardest part of the game was figuring out how to spawn more flasks after the inital spawn. I struggled with this for a long time because phasor objects aren't intuitive.
+I learned how to seperate game files into different jave script files which keeps code more organized
+I also learned how to implement physics to calculate velocity
+The file seperation was learned from this youtube series https://www.youtube.com/watch?v=BABIg2MfG88&list=PLoN_ejT35AEhY4icjiEJ5t2qdunwmQj1R&index=10
 </li>
 
 <li><strong>Prototype Assets:</strong>
-I made all of the animations and textures myself on https://www.piskelapp.com/ using their editor. The sound clip of the flask breaking is from https://www.fesliyanstudios.com/royalty-free-sound-effects-download/glass-shattering-and-breaking-124.
+I made the target and cannon ball in paint but I got the other two assets from the folloqing links
+Boat/Background: https://www.ssbwiki.com/Pirate_Ship#/media/File:SSBU-Pirate_Ship.png
+Cannon: https://imgbin.com/png/rdXkb0db/cartoon-artillery-png
 <ul>
 </ul>
 </li>
 
 <li><strong>Prototype Closest Other Game:</strong>
-The game was based on the phaser tutorial which taught me how to use objects and make animations. The other aspects were derived from the API for phaser 3.
+I made this game by myself, but the idea isn't very complicated. The youtube link in Postmortem was the template I followed when making my game. He followed the phaser example and showed how to break it into its own file with it's own scene.
 </li>
 
 <li><strong>High Concept:</strong>
-A scientist tries to complete his work while not spilling any toxic chemicals on the ground which would result in his death.
+You're a pirate in training and you're learning how to shoot the cannon on a ship.
 </li>
 
 <li><strong>Theme:</strong>
-I used the chemist theme for this game which is shown by the chemist and his goal within the game.
+Theme I chose for this game was Pirate which is shown by the pirate ship and cannon.
 </li>
 
 <li><strong>Mandated Variety:</strong>
-The player moves with the keyboard and specificaly the arrow keys. The flask generation is randomized so this leads to new gameplay every time!
+The targets randomly change positions and decrease in size as the player progresses farther into the game. The cannon ball doesn't go exactly where the player's mouse is to add a bit of challenge.
 </li>
 
 <li><strong>Prototype Goal:</strong>
-This Prototype is testing a difficulty curve which eventually gets so hard the player is forced to lose. This means playing the game is easy, but get a high score gets increasingly difficult the longer the game goes on.
+This Prototype is testing physics manipulation and a difficulty curve with a target that decreases in size. 
 </li>
 
 <li><strong>Player Experience Goals:</strong>
-I want the players to have a care free experience while playing the game while being slightly competetive on getting the highest score possible. Players will be encouraged to share their high scores with each other and try to be the best.
+I want players to just have fun shooting a target over and over again. This could be a stress reliever 
 </li>
 
 <li><strong>Gameplay:</strong>
-The inputs for this game include pressing the left arrow key to move left, right arrow key to move right, and up arrow to jump. The movement of the chemist makes him easy to control so the goal of collecting the flasks can be challenging but fun at the same time. The random spawning of flasks makes the player chose which flasks to go for and which to leave for later. The player should not feel frustrated by the game ending because it is inevitable. 
+The input for this game is aiming with the mouse and clicking to shoot. The cursor is slighlty offset to add a bit of challenge. The gameplay should be fast with players firing quickly rather than aiming. Once the player misses 3 times they can click again to restart.
 </li>
 
 <li><strong>Strategies:</strong>
-I think players will leave flasks that are harder to get until last because of reward analyisis. Once they have enough lives to take the risk they will do so and try to grab the harder flasks. I also see damage boosting becoming useful in the later stages of the game.
+I think players will just shoot at the targets with no real stratigy. Aiming slightly to the right of the targets gives the most sucess.
 </li>
 
 <li><strong>Story/Setting/Premise:</strong>
-The game is about a chemist who works for a large corporation and is tasked will doing chemical research. The corporation doesn't care about the danger of this work or the harm it could have on it's customers. The chemist must battle with his morals when deciding what chemicals to use, but as he tires harder and harder to use safe chemicals it get's increasingly difficult to do so. The death at the end of the game symbolizes the chemist's morals being broken and him caving into the corporation.
-Players will realize that even though the game has a care free exterior, the interior message is a dark and hopeless one. 
+You are a wannabe pirate who just found a ship that will take you. After teaching you the basics, it is now time to learn to fire the cannon. This is your chance to impress everybody.
 </li>
 
 <li><strong>Target Audience:</strong>
-This game is for people who want to think deeper about the message rather than only focusing on the gameplay. 
+This game is for anybody who wants to just de-stress and shoot some targets. Players who want a competetive experience may enjoy going for a high score. 
 </li>
 
 <li><strong>Play Time:</strong>
-The game should take between a few seconds up to a few minutes to play. It would be hard for a player to play for longer given the difficulty curve.
+The game should take between a few seconds up to a few minutes to play. The targets get smaller which make it harder to play for too long.
 </li>
 
 </ul>
