@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Pirate Defense</title>
+<style>
+body
+{
+    color: #777;
+    font-family: "Avenir", Verdana, sans-serif;
+}
+#readme
+{
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+<div id="game"></div>
+<div id="readme">
+<h2>Pirate Defense</h2>
+
+<ul>
+<li><strong>Originality:</strong>
+The game is original because it allows players to shoot cannon balls out of a cannon to hit targets.
+</li>
+
+<li><strong>Technical Merit:</strong>
+The physics and calculation for the velocity of the cannon ball required using math to find the x and y component of the velocity. 
+</li>
+
+<li><strong>Prototype Postmortem:</strong>
+I learned how to seperate game files into different jave script files which keeps code more organized
+I also learned how to implement physics to calculate velocity
+The file seperation was learned from this youtube series https://www.youtube.com/watch?v=BABIg2MfG88&list=PLoN_ejT35AEhY4icjiEJ5t2qdunwmQj1R&index=10
+</li>
+
+<li><strong>Prototype Assets:</strong>
+I made the target and cannon ball in paint but I got the other two assets from the folloqing links
+Boat/Background: https://www.ssbwiki.com/Pirate_Ship#/media/File:SSBU-Pirate_Ship.png
+Cannon: https://imgbin.com/png/rdXkb0db/cartoon-artillery-png
+<ul>
+</ul>
+</li>
+
+<li><strong>Prototype Closest Other Game:</strong>
+I made this game by myself, but the idea isn't very complicated. The youtube link in Postmortem was the template I followed when making my game. He followed the phaser example and showed how to break it into its own file with it's own scene.
+</li>
+
+<li><strong>High Concept:</strong>
+You're a pirate in training and you're learning how to shoot the cannon on a ship.
+</li>
+
+<li><strong>Theme:</strong>
+Theme I chose for this game was Pirate which is shown by the pirate ship and cannon.
+</li>
+
+<li><strong>Mandated Variety:</strong>
+The targets randomly change positions and decrease in size as the player progresses farther into the game. The cannon ball doesn't go exactly where the player's mouse is to add a bit of challenge.
+</li>
+
+<li><strong>Prototype Goal:</strong>
+This Prototype is testing physics manipulation and a difficulty curve with a target that decreases in size. 
+</li>
+
+<li><strong>Player Experience Goals:</strong>
+I want players to just have fun shooting a target over and over again. This could be a stress reliever 
+</li>
+
+<li><strong>Gameplay:</strong>
+The input for this game is aiming with the mouse and clicking to shoot. The cursor is slighlty offset to add a bit of challenge. The gameplay should be fast with players firing quickly rather than aiming. Once the player misses 3 times they can click again to restart.
+</li>
+
+<li><strong>Strategies:</strong>
+I think players will just shoot at the targets with no real stratigy. Aiming slightly to the right of the targets gives the most sucess.
+</li>
+
+<li><strong>Story/Setting/Premise:</strong>
+You are a wannabe pirate who just found a ship that will take you. After teaching you the basics, it is now time to learn to fire the cannon. This is your chance to impress everybody.
+</li>
+
+<li><strong>Target Audience:</strong>
+This game is for anybody who wants to just de-stress and shoot some targets. Players who want a competetive experience may enjoy going for a high score. 
+</li>
+
+<li><strong>Play Time:</strong>
+The game should take between a few seconds up to a few minutes to play. The targets get smaller which make it harder to play for too long.
+</li>
+
+</ul>
+</div>
+
+<!-- main.js must come at the end since it expects the HTML to have been created. -->
+<script src="js/main.js" type="module"></script>
+</body>
+</html>
