@@ -85,7 +85,7 @@ class PirateScene extends Phaser.Scene {
 
     update(){
         if (stupid_fix){
-            this.sound.add('shoot').play();
+            this.sound.add('shoot', {volume: 0.5}).play();
             stupid_fix = false
         }
         if (ball.x < 0 || ball.x > 1200 || ball.y > 1000){
@@ -98,7 +98,7 @@ class PirateScene extends Phaser.Scene {
             if(score < 200){
                 lives -= 1;
             }
-            this.sound.add('splash').play();
+            this.sound.add('splash', {volume: 0.5}).play();
             livesText.setText('Lives: ' + lives)
             shot = false
         }
@@ -144,7 +144,7 @@ class PirateScene extends Phaser.Scene {
 
 function move_target(ball, target){
     ball.setVisible(false)
-    this.sound.add('flask_break').play();
+    this.sound.add('flask_break', {volume: 0.5}).play();
     ball.setGravity(0,0)
     ball.setVelocityY(0);
     ball.setVelocityX(0);

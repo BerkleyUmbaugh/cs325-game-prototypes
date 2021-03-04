@@ -19,73 +19,73 @@ body
 <body>
 <div id="game"></div>
 <div id="readme">
-<h2>Pirate Defense</h2>
+<h2>Pirate Defense v2.0</h2>
 
 <ul>
 <li><strong>Originality:</strong>
-The game is original because it allows players to shoot cannon balls out of a cannon to hit targets.
+    The originality from the game comes from the target movement and size changing. The cannon ball also has gravity which makes for interesting gameplay.
 </li>
 
 <li><strong>Technical Merit:</strong>
-The physics and calculation for the velocity of the cannon ball required using math to find the x and y component of the velocity. 
+    The velocity of the cannon ball was calculated using trigonometry and physics rather than using the built-in phaser functions. I made this choice because I didn’t understand the phaser examples, but I did know enough math and physics to implement it myself. The restart mechanism is also better than in my previous games. 
 </li>
 
 <li><strong>Prototype Postmortem:</strong>
-I learned how to seperate game files into different jave script files which keeps code more organized
-I also learned how to implement physics to calculate velocity
-The file seperation was learned from this youtube series https://www.youtube.com/watch?v=BABIg2MfG88&list=PLoN_ejT35AEhY4icjiEJ5t2qdunwmQj1R&index=10
+    I learned a lot about the phaser physics function for setting velocity and angle. The hardest part was making the cannon ball move towards the cursor. The easiest part of the game was actually the target physics because it was mostly just picking a static point and giving it a velocity
 </li>
 
 <li><strong>Prototype Assets:</strong>
-I made the target and cannon ball in paint but I got the other two assets from the folloqing links
-Boat/Background: https://www.ssbwiki.com/Pirate_Ship#/media/File:SSBU-Pirate_Ship.png
-Cannon: https://imgbin.com/png/rdXkb0db/cartoon-artillery-png
+    I made the cannon, cannon ball, and target. The remaining resources are listed below with their proper links. <br />
+    background/ship - https://www.ssbwiki.com/Pirate_Ship#/media/File:SSBU-Pirate_Ship.png  <br />
+    splash sound - https://www.fesliyanstudios.com/sound-effects-search.php?q=cannon  <br />
+    target break -  https://www.fesliyanstudios.com/royalty-free-sound-effects-download/glass-shattering-and-breaking-124  <br />
+    cannon fire - https://www.fesliyanstudios.com/royalty-free-sound-effects-download/bomb-explosion-39  <br />   
 <ul>
 </ul>
 </li>
 
 <li><strong>Prototype Closest Other Game:</strong>
-I made this game by myself, but the idea isn't very complicated. The youtube link in Postmortem was the template I followed when making my game. He followed the phaser example and showed how to break it into its own file with it's own scene.
+    This was an iteration of my previous weeks game in which I learned to break scenes up into multiple files. This game doesn’t specifically follow any phaser examples and information for building  it came from previous games and the phaser API.
 </li>
 
 <li><strong>High Concept:</strong>
-You're a pirate in training and you're learning how to shoot the cannon on a ship.
+    Attempt to shoot targets which increase in speed and decrease in size to earn 1000 points.
 </li>
 
 <li><strong>Theme:</strong>
-Theme I chose for this game was Pirate which is shown by the pirate ship and cannon.
+    I iterated a previous game which had the theme of pirates. This is shown by the pirate ship and cannon.
 </li>
 
 <li><strong>Mandated Variety:</strong>
-The targets randomly change positions and decrease in size as the player progresses farther into the game. The cannon ball doesn't go exactly where the player's mouse is to add a bit of challenge.
+    The target positions are randomly generated to make the player react quickly to shoot them. The genre is arcade with the main goal being to get 1000 points or a high score. 
 </li>
 
 <li><strong>Prototype Goal:</strong>
-This Prototype is testing physics manipulation and a difficulty curve with a target that decreases in size. 
+    I wanted to test the player’s reaction time and aiming skills when attempting to shoot a moving target.
 </li>
 
 <li><strong>Player Experience Goals:</strong>
-I want players to just have fun shooting a target over and over again. This could be a stress reliever 
+    I want players to have a challenging but fun time trying to break enough targets to get 1000 points. It should be relaxing and easy to play. I hope they enjoy the simplicity of the game. 
 </li>
 
 <li><strong>Gameplay:</strong>
-The input for this game is aiming with the mouse and clicking to shoot. The cursor is slighlty offset to add a bit of challenge. The gameplay should be fast with players firing quickly rather than aiming. Once the player misses 3 times they can click again to restart.
+    The controls for this game only involve clicking with the mouse to fire the cannon. The cannon can only shoot one cannon ball at a time, and the player loses a life if they miss a target or the target falls off screen (player will only be able to lose 1 life per target miss or target falling off screen not 2 lives). As the game progresses, the targets get smaller and they begin to move downwards towards the water. If the player loses 5 lives the game is over and if they have more than 1000 points they win. The game can be restarted by clicking. 
 </li>
 
 <li><strong>Strategies:</strong>
-I think players will just shoot at the targets with no real stratigy. Aiming slightly to the right of the targets gives the most sucess.
+    I don’t think any particular strategy will be effective other than trying to shoot the targets as they fall. In the later stages of the game the targets move towards the center of the screen, so waiting for them to get closer might make them easier to hit.
 </li>
 
 <li><strong>Story/Setting/Premise:</strong>
-You are a wannabe pirate who just found a ship that will take you. After teaching you the basics, it is now time to learn to fire the cannon. This is your chance to impress everybody.
+    You are a wannabe pirate who just found a ship that will take you. After teaching you the basics, it is now time to learn to fire the cannon. This is your chance to impress everybody and show them why you should be a member of the crew. The highest score achieved by any of the crewmates is 1460. Think you can do better? 
 </li>
 
 <li><strong>Target Audience:</strong>
-This game is for anybody who wants to just de-stress and shoot some targets. Players who want a competetive experience may enjoy going for a high score. 
+    I think the demographic for this game will be people who enjoy simple arcade games in which the goal is to get as many points as possible.
 </li>
 
 <li><strong>Play Time:</strong>
-The game should take between a few seconds up to a few minutes to play. The targets get smaller which make it harder to play for too long.
+    The game takes a few minutes to play but can take up to 10 minutes if you get into a rhythm with hitting the targets.
 </li>
 
 </ul>
